@@ -9,14 +9,15 @@ const getAll = async () => {
     });
 };
 
-const addNewTask = async (name, desc, date) => {
+const addNewTask = async (name, desc, date, status) => {
     connection()
-    .then((db) => db.collection("tasks").insertOne({ name, desc, date }))
+    .then((db) => db.collection("tasks").insertOne({ name, desc, date, status: false }))
     .then((result) => ({
       _id: result.insertedId,
       name,
       desc,
       date,
+      status: false,
     }));
 };
 

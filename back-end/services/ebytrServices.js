@@ -2,9 +2,9 @@ const ebytrModels = require('../models/ebytrModels');
 
 const getAll = async () => ebytrModels.getAll();
 
-const addNewTask = async (name, desc) => {
+const addNewTask = async (name, desc, status) => {
   const date = Date();
-  const response = await ebytrModels.addNewTask(name, desc, date);
+  const response = await ebytrModels.addNewTask(name, desc, date, status);
   return response;
 }
 
