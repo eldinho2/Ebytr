@@ -9,23 +9,25 @@ const getAll = async () => {
     });
 };
 
-const addNewTask = async (name, desc, date) => {
+const addNewTask = async (task, desc, date, status, edit) => {
     connection()
-    .then((db) => db.collection("tasks").insertOne({ name, desc, date }))
+    .then((db) => db.collection("tasks").insertOne({ task, desc, date, status: false, edit: false }))
     .then((result) => ({
       _id: result.insertedId,
-      name,
+      task,
       desc,
       date,
+      status,
+      edit
     }));
 };
 
-const editTask = async (id, name, desc) => {
+const editTask = async (id, task, desc, status, edit) => {
   return connection()
     .then((db) =>
       db
         .collection("tasks")
-        .findOneAndUpdate({ _id: ObjectId(id) }, { $set: { name, desc } })
+        .findOneAndUpdate({ _id: ObjectId(id) }, { $set: { task, desc, status, edit } })
     )
 };
 
