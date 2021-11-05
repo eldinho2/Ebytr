@@ -17,16 +17,16 @@ const addNewTask = async (name, desc, date, status) => {
       name,
       desc,
       date,
-      status: false,
+      status,
     }));
 };
 
-const editTask = async (id, name, desc) => {
+const editTask = async (id, name, desc, status) => {
   return connection()
     .then((db) =>
       db
         .collection("tasks")
-        .findOneAndUpdate({ _id: ObjectId(id) }, { $set: { name, desc } })
+        .findOneAndUpdate({ _id: ObjectId(id) }, { $set: { name, desc, status } })
     )
 };
 

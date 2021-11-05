@@ -8,7 +8,7 @@ const addNewTask = async (name, desc, status) => {
   return response;
 }
 
-const editTask = async (id, name, desc) => ebytrModels.editTask(id, name , desc);
+const editTask = async (id, name, desc, status) => ebytrModels.editTask(id, name , desc, status);
 
 const deleteTask = async (id) => ebytrModels.deleteTask(id);
 

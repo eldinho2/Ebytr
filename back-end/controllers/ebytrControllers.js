@@ -15,8 +15,8 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', (req, res) => {
   const { id } = req.params;
-  const { name, desc } = req.body;
-  const response = services.editTask(id, name, desc);
+  const { name, desc, status } = req.body;
+  const response = services.editTask(id, name, desc, status);
   res.status(200).json(response);
 })
 
