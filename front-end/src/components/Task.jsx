@@ -64,7 +64,6 @@ function Tasks({ desc, task, id, getData, date, status, edit }) {
         )}
       </h4>
       <span>Data de Criação {formatedDate}</span>
-      <h4> {id} </h4>
       <button onClick={() => deleteTask(id, getData)}>Apagar</button>
     </div>
   );

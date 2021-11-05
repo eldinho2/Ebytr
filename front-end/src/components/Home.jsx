@@ -14,6 +14,7 @@ function Home() {
 
   const [data, setData] = useState([]);
   const [refresh, setRefresh] = useState(false);
+  const [Checked, setChecked] = useState({ active: false });
 
   const getData = () => {
     axios.get('http://localhost:3001')
@@ -24,6 +25,9 @@ function Home() {
         console.log(err);
       });
   }
+
+  const itensToShow = Checked.active ? data.filter(item => item.status === true, data) : data;
+
 
   useEffect(() => {
     getData();
@@ -36,7 +40,7 @@ function Home() {
         {data.length === 0 ? (
           <TasksNotFound />
         ) : (
-          data.map(
+          itensToShow.map(
             ({ desc, task, _id: id, date, status, edit }) => (
               <Task
                 key={id}
@@ -71,9 +75,9 @@ function Home() {
         </button>
         <button
           type="button"
-          onClick={() => sortTasks(setData, data, setRefresh, refresh, 'status')}
+          onClick={() => setChecked({ active: !Checked.active })}
         >
-          Ordenar por status
+          Mostrar feitas
         </button>
       </div>
     </div>
