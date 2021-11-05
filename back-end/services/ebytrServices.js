@@ -2,13 +2,13 @@ const ebytrModels = require('../models/ebytrModels');
 
 const getAll = async () => ebytrModels.getAll();
 
-const addNewTask = async (name, desc, status) => {
-  const date = Date();
-  const response = await ebytrModels.addNewTask(name, desc, date, status);
+const addNewTask = async (task, desc, status, edit) => {
+  const date = new Date();
+  const response = await ebytrModels.addNewTask(task, desc, date, status, edit);
   return response;
 }
 
-const editTask = async (id, name, desc, status) => ebytrModels.editTask(id, name , desc, status);
+const editTask = async (id, task, desc, status, edit) => ebytrModels.editTask(id, task , desc, status, edit);
 
 const deleteTask = async (id) => ebytrModels.deleteTask(id);
 

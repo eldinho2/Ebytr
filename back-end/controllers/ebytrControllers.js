@@ -8,15 +8,15 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-  const { name, desc } = req.body;
-  const response = await services.addNewTask(name, desc);
+  const { task, desc } = req.body;
+  const response = await services.addNewTask(task, desc);
   res.status(201).json(response);
 })
 
 router.put('/:id', (req, res) => {
   const { id } = req.params;
-  const { name, desc, status } = req.body;
-  const response = services.editTask(id, name, desc, status);
+  const { task, desc, status, edit } = req.body;
+  const response = services.editTask(id, task, desc, status, edit);
   res.status(200).json(response);
 })
 
